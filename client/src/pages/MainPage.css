@@ -1,6 +1,6 @@
 .iron-frames-header {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 .iron-frames-header h1 {
@@ -33,11 +33,6 @@
   padding-left: 2.5%;
 }
 
-.iron-frames-footer {
-  text-align: center;
-  margin-top: 65px;
-}
-
 .inputs > div {
   padding: 40px 30px;
   border-radius: 40px;
@@ -45,6 +40,11 @@
 }
 
 .input-block {
-  height: 85px;
+  height: 70px;
   width: 70px;
+}
+
+.iron-frames-footer {
+  text-align: center;
+  margin-top: 70px;
 }
