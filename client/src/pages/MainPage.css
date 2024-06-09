@@ -24,6 +24,12 @@
   width: 13%;
 }
 
+.iron-frames-settings > button:hover {
+  background-color: #000000;
+  color: white;
+  transition: all 0.3s ease;
+}
+
 .iron-frames-settings > select {
   background-color: #000000;
   border: 0px;
