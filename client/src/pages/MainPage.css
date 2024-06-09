@@ -1,0 +1,20 @@
+.iron-frames-header h1 {
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.iron-frames-header h3 {
+  font-size: 24px;
+}
+
+.iron-frames-body > * {
+  border-radius: 5px;
+  border: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.iron-frames-body > select {
+  background-color: #000000;
+  color: white;
+}
