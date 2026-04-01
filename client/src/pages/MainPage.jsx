@@ -119,6 +119,7 @@ export default function MainPage() {
         <section className="iron-frames-settings row justify-content-between mx-auto col-8 mt-5">
           <select>
             <option value="EWGF">Devil Jin ~ EWGF</option>
+            <option value="SKYROCKET">Hwaorang ~ Sky Rocket</option>
           </select>
           <button>Timer</button>
           <button>Controls</button>

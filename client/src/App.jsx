@@ -5,7 +5,7 @@ import AnimatedCursor from "react-animated-cursor";
 function App() {
   return (
     <div>
-      <AnimatedCursor
+      {/* <AnimatedCursor
         innerSize={10}
         outerSize={10}
         color="0,0,0"
@@ -15,7 +15,7 @@ function App() {
         outerStyle={{
           border: "2px solid black",
         }}
-      />
+      /> */}
       <MainPage />
     </div>
   );
