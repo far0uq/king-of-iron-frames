@@ -10,3 +10,4 @@ export const movelist = [
     label: "Sky Rocket",
   },
 ];
+

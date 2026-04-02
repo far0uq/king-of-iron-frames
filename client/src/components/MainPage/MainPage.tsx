@@ -1,11 +1,9 @@
 import { useState } from "react";
 import "@components/MainPage/MainPage.css";
-import direction from "@assets/direction.png";
-import neutral from "@assets/neutral.png";
-import two from "@assets/two.png";
 import { movelist } from "@constants/moves.constants";
 import { characters } from "@constants/characters.constants";
 import { Dropdown } from "@components/MainPage/Dropdown.tsx";
+import CommandDisplay from "@components/MainPage/CommandDisplay.tsx";
 
 export default function MainPage() {
   const [selectedCharacter, setSelectedCharacter] = useState("");
@@ -22,32 +20,7 @@ export default function MainPage() {
           <h3 className="col-7">Practice your TEKKEN Just-Frame Inputs!</h3>
         </header>
 
-        <section className="inputs d-flex row justify-content-between col-8 mx-auto mt-5">
-          <div>
-            <img src={direction} className="input-block" />
-          </div>
-          <div>
-            <img src={neutral} className="input-block" />
-          </div>
-          <div>
-            <img
-              src={direction}
-              style={{ transform: "rotate(90deg)" }}
-              className="input-block"
-            />
-          </div>
-          <div>
-            <img
-              src={direction}
-              style={{ transform: "rotate(45deg)" }}
-              className="input-block"
-            />
-          </div>
-          <div>
-            ₹
-            <img src={two} className="input-block" />
-          </div>
-        </section>
+        <CommandDisplay />
 
         <section className="iron-frames-settings row justify-content-between mx-auto col-12 mt-5">
           <Dropdown
