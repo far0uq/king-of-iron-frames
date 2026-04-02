@@ -28,6 +28,11 @@
   width: 13%;
 }
 
+.iron-frames-settings > button:disabled {
+  background-color: #cbcbcb;
+  color: #000000;
+}
+
 .iron-frames-settings > button:hover {
   background-color: #000000;
   color: white;
@@ -38,7 +43,7 @@
   background-color: #000000;
   border: 0px;
   color: white;
-  width: 70%;
+  width: fit-content;
   border-right: 1vw solid transparent;
   padding-left: 2.5%;
 }
