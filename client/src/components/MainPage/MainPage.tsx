@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import "@components/MainPage/MainPage.css";
 import { movelist } from "@constants/moves.constants";
-import { characters } from "@constants/characters.constants";
+import { charactersDropdown } from "@constants/characters.constants";
 import { Dropdown } from "@components/MainPage/Dropdown.tsx";
 import CommandDisplay from "@components/MainPage/CommandDisplay.tsx";
+import type { Input } from "@constants/inputs.constants";
 
 export default function MainPage() {
-  const [selectedCharacter, setSelectedCharacter] = useState("");
-  const [selectedMove, setSelectedMove] = useState("");
-  const [inputNotation, setInputNotation] = useState<string[]>([]);
+  const [selectedCharacter, setSelectedCharacter] = useState<string>("");
+  const [selectedMove, setSelectedMove] = useState<string>("");
+  const [inputNotation, setInputNotation] = useState<Input[][]>([]);
 
   useEffect(() => {
     setSelectedMove("");
@@ -31,7 +32,7 @@ export default function MainPage() {
           <Dropdown
             value={selectedCharacter}
             onChange={setSelectedCharacter}
-            options={characters}
+            options={charactersDropdown}
             placeholder="Select a character"
             className="col-4"
           />
