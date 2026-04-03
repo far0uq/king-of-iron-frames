@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "@components/MainPage/MainPage.css";
 import { movelist } from "@constants/moves.constants";
 import { characters } from "@constants/characters.constants";
@@ -8,7 +8,12 @@ import CommandDisplay from "@components/MainPage/CommandDisplay.tsx";
 export default function MainPage() {
   const [selectedCharacter, setSelectedCharacter] = useState("");
   const [selectedMove, setSelectedMove] = useState("");
-  console.log(selectedCharacter);
+  const [inputNotation, setInputNotation] = useState<string[]>([]);
+
+  useEffect(() => {
+    setSelectedMove("");
+    setInputNotation([]);
+  }, [selectedCharacter]);
 
   return (
     <div className="main-box d-flex align-items-center">
@@ -20,7 +25,7 @@ export default function MainPage() {
           <h3 className="col-7">Practice your TEKKEN Just-Frame Inputs!</h3>
         </header>
 
-        <CommandDisplay />
+        <CommandDisplay inputNotation={inputNotation} />
 
         <section className="iron-frames-settings row justify-content-between mx-auto col-12 mt-5">
           <Dropdown
@@ -33,7 +38,13 @@ export default function MainPage() {
 
           <Dropdown
             value={selectedMove}
-            onChange={setSelectedMove}
+            onChange={(selectedValue) => {
+              setSelectedMove(selectedValue);
+              setInputNotation(
+                movelist.find((move) => move.value === selectedValue)
+                  ?.inputNotation || [],
+              );
+            }}
             options={movelist
               .filter((move) => move.associatedCharacter === selectedCharacter)
               .map((move) => ({ value: move.value, label: move.label }))}
