@@ -12,7 +12,6 @@ function CommandBlock({ inputSet }: Props) {
       {inputSet.map((input) => (
         <img
           src={inputsImageMap[input]}
-          className="input-block"
           style={{ transform: directionMapping[input] }}
         />
       ))}
