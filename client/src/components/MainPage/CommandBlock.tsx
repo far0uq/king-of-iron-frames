@@ -4,11 +4,14 @@ import type { Input } from "@constants/inputs.constants";
 
 type Props = {
   inputSet: Input[];
+  inputLength: number;
 };
 
-function CommandBlock({ inputSet }: Props) {
+function CommandBlock({ inputSet, inputLength }: Props) {
   return (
-    <div>
+    <div
+      className={`h-full grid grid-flow-col content-center bg-black rounded w-${inputSet.length / inputLength}`}
+    >
       {inputSet.map((input) => (
         <img
           src={inputsImageMap[input]}

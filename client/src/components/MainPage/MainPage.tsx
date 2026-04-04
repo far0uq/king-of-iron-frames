@@ -10,15 +10,17 @@ export default function MainPage() {
   const [selectedCharacter, setSelectedCharacter] = useState<string>("");
   const [selectedMove, setSelectedMove] = useState<string>("");
   const [inputNotation, setInputNotation] = useState<Input[][]>([]);
+  const [inputLength, setInputLength] = useState<number>(0);
 
   useEffect(() => {
     setSelectedMove("");
     setInputNotation([]);
+    setInputLength(0);
   }, [selectedCharacter]);
 
   return (
     <div className="h-screen grid grid-flow-row grid-rows-12 gap-6 p-10">
-      <header className="row-span-2 content-center">
+      <header className="row-span-2 grid grid-flow-row gap-3 content-center">
         <h1 className=" text-7xl font-bold">King of Iron Frames</h1>
         <h3 className=" text-xl">Practice your TEKKEN Just-Frame Inputs!</h3>
       </header>
@@ -42,6 +44,10 @@ export default function MainPage() {
               setInputNotation(
                 movelist.find((move) => move.value === selectedValue)
                   ?.inputNotation || [],
+              );
+              setInputLength(
+                movelist.find((move) => move.value === selectedValue)
+                  ?.inputLength || 0,
               );
             }}
             options={movelist
@@ -71,10 +77,12 @@ export default function MainPage() {
         </div>
       </section>
 
-      {/* Command Display */}
-      <CommandDisplay inputNotation={inputNotation} className="row-span-8" />
+      <CommandDisplay
+        inputNotation={inputNotation}
+        inputLength={inputLength}
+        className="row-span-8"
+      />
 
-      {/* Footer */}
       <footer className="row-span-1 text-center text-sm text-gray-500 content-center">
         Made by Farouq with ⚡
       </footer>

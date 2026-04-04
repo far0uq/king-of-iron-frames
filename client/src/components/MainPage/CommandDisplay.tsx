@@ -4,18 +4,26 @@ import EmptyCommandDisplay from "./EmptyCommandDisplay";
 
 interface CommandDisplayProps {
   inputNotation: Input[][];
+  inputLength: number;
   className?: string;
 }
 
-function CommandDisplay({ inputNotation, className }: CommandDisplayProps) {
+function CommandDisplay({
+  inputNotation,
+  inputLength,
+  className,
+}: CommandDisplayProps) {
+  const isBorderVisible = inputNotation.length === 0;
   return (
     <section
-      className={`grid border-2 border-black border-dashed content-center justify-items-center rounded ${className}`}
+      className={`flex gap-4 border-2 ${isBorderVisible ? "border-black border-dashed" : "border-transparent"} items-center justify-center rounded ${className}`}
     >
       {inputNotation.length === 0 ? (
         <EmptyCommandDisplay />
       ) : (
-        inputNotation.map((inputSet) => <CommandBlock inputSet={inputSet} />)
+        inputNotation.map((inputSet) => (
+          <CommandBlock inputSet={inputSet} inputLength={inputLength} />
+        ))
       )}
     </section>
   );

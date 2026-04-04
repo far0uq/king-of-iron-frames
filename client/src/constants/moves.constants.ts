@@ -12,6 +12,7 @@ export const movelist = [
       [INPUTS.DOWN],
       [INPUTS.DOWN_RIGHT, INPUTS.TWO],
     ],
+    inputLenght: 5,
   },
   {
     value: "SKYROCKET",
@@ -23,6 +24,7 @@ export const movelist = [
       [INPUTS.DOWN],
       [INPUTS.DOWN_RIGHT, INPUTS.FOUR],
     ],
+    inputLenght: 5,
   },
   {
     value: "SHINING_WIZARD",
@@ -34,11 +36,13 @@ export const movelist = [
 
       [INPUTS.RIGHT, INPUTS.TWO_FOUR],
     ],
+    inputLenght: 4,
   },
   {
     value: "ACID_RAIN",
     associatedCharacter: CHARACTERS.LEE_CHAOLAN,
     label: "Acid Rain",
     inputNotation: [[INPUTS.ONE], [INPUTS.THREE, INPUTS.THREE, INPUTS.THREE]],
+    inputLength: 4,
   },
 ];
