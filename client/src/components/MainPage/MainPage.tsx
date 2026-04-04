@@ -26,9 +26,7 @@ export default function MainPage() {
           <h3 className="col-7">Practice your TEKKEN Just-Frame Inputs!</h3>
         </header>
 
-        <CommandDisplay inputNotation={inputNotation} />
-
-        <section className="iron-frames-settings row justify-content-between mx-auto col-12 mt-5">
+        <section className="iron-frames-settings row justify-content-between mx-auto col-10 mt-5">
           <Dropdown
             value={selectedCharacter}
             onChange={setSelectedCharacter}
@@ -56,6 +54,8 @@ export default function MainPage() {
           <button disabled>Timer</button>
           <button disabled>Controls</button>
         </section>
+
+        <CommandDisplay inputNotation={inputNotation} />
 
         <footer className="iron-frames-footer">Made by Farouq with ⚡</footer>
       </div>

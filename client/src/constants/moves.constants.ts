@@ -21,7 +21,7 @@ export const movelist = [
       [INPUTS.RIGHT],
       [INPUTS.NEUTRAL],
       [INPUTS.DOWN],
-      [INPUTS.DOWN_RIGHT, INPUTS.TWO],
+      [INPUTS.DOWN_RIGHT, INPUTS.FOUR],
     ],
   },
   {
@@ -30,9 +30,15 @@ export const movelist = [
     label: "Blue-Spark Shining Wizard",
     inputNotation: [
       [INPUTS.RIGHT],
-      [INPUTS.NEUTRAL],
-      [INPUTS.DOWN],
-      [INPUTS.DOWN_RIGHT, INPUTS.TWO],
+      [INPUTS.RIGHT],
+
+      [INPUTS.RIGHT, INPUTS.TWO_FOUR],
     ],
+  },
+  {
+    value: "ACID_RAIN",
+    associatedCharacter: CHARACTERS.LEE_CHAOLAN,
+    label: "Acid Rain",
+    inputNotation: [[INPUTS.ONE], [INPUTS.THREE, INPUTS.THREE, INPUTS.THREE]],
   },
 ];
