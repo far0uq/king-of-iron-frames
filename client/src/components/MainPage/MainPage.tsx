@@ -1,79 +1,91 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "@components/MainPage/MainPage.css";
-import direction from "@assets/direction.png";
-import neutral from "@assets/neutral.png";
-import two from "@assets/two.png";
 import { movelist } from "@constants/moves.constants";
-import { characters } from "@constants/characters.constants";
+import { charactersDropdown } from "@constants/characters.constants";
 import { Dropdown } from "@components/MainPage/Dropdown.tsx";
+import CommandDisplay from "@components/MainPage/CommandDisplay.tsx";
+import type { Input } from "@constants/inputs.constants";
 
 export default function MainPage() {
-  const [selectedCharacter, setSelectedCharacter] = useState("");
-  const [selectedMove, setSelectedMove] = useState("");
-  console.log(selectedCharacter);
+  const [selectedCharacter, setSelectedCharacter] = useState<string>("");
+  const [selectedMove, setSelectedMove] = useState<string>("");
+  const [inputNotation, setInputNotation] = useState<Input[][]>([]);
+  const [inputLength, setInputLength] = useState<number>(0);
+
+  useEffect(() => {
+    setSelectedMove("");
+    setInputNotation([]);
+    setInputLength(0);
+  }, [selectedCharacter]);
 
   return (
-    <div className="main-box d-flex align-items-center">
-      <div className="container">
-        <header className="iron-frames-header row justify-content-center">
-          <h1 className="col-7">
-            King of <br /> Iron Frames
-          </h1>
-          <h3 className="col-7">Practice your TEKKEN Just-Frame Inputs!</h3>
-        </header>
+    <div className="h-screen grid grid-flow-row grid-rows-12 gap-6 p-10">
+      <header className="row-span-2 grid grid-flow-row gap-3 content-center">
+        <h1 className=" text-7xl font-bold">King of Iron Frames</h1>
+        <h3 className=" text-xl">Practice your TEKKEN Just-Frame Inputs!</h3>
+      </header>
 
-        <section className="inputs d-flex row justify-content-between col-8 mx-auto mt-5">
-          <div>
-            <img src={direction} className="input-block" />
-          </div>
-          <div>
-            <img src={neutral} className="input-block" />
-          </div>
-          <div>
-            <img
-              src={direction}
-              style={{ transform: "rotate(90deg)" }}
-              className="input-block"
-            />
-          </div>
-          <div>
-            <img
-              src={direction}
-              style={{ transform: "rotate(45deg)" }}
-              className="input-block"
-            />
-          </div>
-          <div>
-            ₹
-            <img src={two} className="input-block" />
-          </div>
-        </section>
-
-        <section className="iron-frames-settings row justify-content-between mx-auto col-12 mt-5">
+      <section className="row-span-1 grid grid-cols-6 gap-8 bg-gray-50">
+        <div className="col-span-2">
           <Dropdown
             value={selectedCharacter}
             onChange={setSelectedCharacter}
-            options={characters}
+            options={charactersDropdown}
             placeholder="Select a character"
-            className="col-4"
+            className="w-full h-full bg-black border-0 text-white px-4 py-2 border-r-[1vw] border-r-transparent rounded"
           />
+        </div>
 
+        <div className="col-span-2">
           <Dropdown
             value={selectedMove}
-            onChange={setSelectedMove}
+            onChange={(selectedValue) => {
+              setSelectedMove(selectedValue);
+              setInputNotation(
+                movelist.find((move) => move.value === selectedValue)
+                  ?.inputNotation || [],
+              );
+              setInputLength(
+                movelist.find((move) => move.value === selectedValue)
+                  ?.inputLength || 0,
+              );
+            }}
             options={movelist
               .filter((move) => move.associatedCharacter === selectedCharacter)
               .map((move) => ({ value: move.value, label: move.label }))}
             placeholder="Select a move"
-            className="col-4"
+            className="w-full h-full bg-black border-0 text-white px-4 py-2 border-r-[1vw] border-r-transparent rounded"
           />
+        </div>
 
-          <button disabled>Timer</button>
-          <button disabled>Controls</button>
-        </section>
+        <div className="col-span-1">
+          <button
+            disabled
+            className="w-full h-full px-4 py-2 bg-black text-white rounded cursor-not-allowed disabled:bg-gray-300"
+          >
+            Timer
+          </button>
+        </div>
 
-        <footer className="iron-frames-footer">Made by Farouq with ⚡</footer>
-      </div>
+        <div className="col-span-1">
+          <button
+            disabled
+            className="w-full h-full px-4 py-2 bg-black text-white rounded cursor-not-allowed disabled:bg-gray-300"
+          >
+            Controls
+          </button>
+        </div>
+      </section>
+
+      <CommandDisplay
+        inputNotation={inputNotation}
+        inputLength={inputLength}
+        className="row-span-8"
+      />
+
+      <footer className="row-span-1 text-center text-sm text-gray-500 content-center">
+        Made by Farouq with ⚡
+      </footer>
     </div>
   );
 }
