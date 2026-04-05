@@ -99,3 +99,71 @@ export const inputsImageMap: Record<Input, string> = {
   [INPUTS.DOWN_RIGHT]: direction,
   [INPUTS.DOWN_RIGHT_HELD]: direction_held,
 };
+
+export const Keys = {
+  // Letters
+  ...Object.fromEntries(
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((c) => [c, `Key${c}`]),
+  ),
+
+  // Digits
+  ...Object.fromEntries(
+    "0123456789".split("").map((n) => [`N${n}`, `Digit${n}`]),
+  ),
+
+  // Arrows
+  UP: "ArrowUp",
+  DOWN: "ArrowDown",
+  LEFT: "ArrowLeft",
+  RIGHT: "ArrowRight",
+
+  // Modifiers & System
+  SPACE: "Space",
+  ENTER: "Enter",
+  ESCAPE: "Escape",
+  SHIFT: "ShiftLeft",
+  CTRL: "ControlLeft",
+  ALT: "AltLeft",
+  BACKSPACE: "Backspace",
+  TAB: "Tab",
+
+  // Brackets/Misc (Useful for "Reset Position" shortcuts)
+  L_BRACKET: "BracketLeft",
+  R_BRACKET: "BracketRight",
+  COMMA: "Comma",
+  PERIOD: "Period",
+  SLASH: "Slash",
+};
+
+const inputMapping = {
+  [INPUTS.UP]: Keys.,
+  [INPUTS.DOWN]: Keys.S,
+  [INPUTS.LEFT]: Keys.A,
+  [INPUTS.RIGHT]: Keys.D,
+  [INPUTS.UP_HELD]: "↑",
+  [INPUTS.DOWN_HELD]: "↓",
+  [INPUTS.LEFT_HELD]: "←",
+  [INPUTS.RIGHT_HELD]: "→",
+  [INPUTS.UP_LEFT]: "↖",
+  [INPUTS.UP_LEFT_HELD]: "↖",
+  [INPUTS.UP_RIGHT]: "↗",
+  [INPUTS.UP_RIGHT_HELD]: "↗",
+  [INPUTS.DOWN_LEFT]: "↙",
+  [INPUTS.DOWN_LEFT_HELD]: "↙",
+  [INPUTS.DOWN_RIGHT]: "↘",
+  [INPUTS.DOWN_RIGHT_HELD]: "↘",
+  [INPUTS.ONE]: "1",
+  [INPUTS.TWO]: "2",
+  [INPUTS.THREE]: "3",
+  [INPUTS.FOUR]: "4",
+  [INPUTS.ONE_TWO]: "1+2",
+  [INPUTS.ONE_THREE]: "1+3",
+  [INPUTS.ONE_FOUR]: "1+4",
+  [INPUTS.TWO_THREE]: "2+3",
+  [INPUTS.TWO_FOUR]: "2+4",
+  [INPUTS.THREE_FOUR]: "3+4",
+  [INPUTS.ONE_TWO_THREE]: "1+2+3",
+  [INPUTS.ONE_TWO_FOUR]: "1+2+4",
+  [INPUTS.TWO_THREE_FOUR]: "2+3+4",
+  [INPUTS.ONE_TWO_THREE_FOUR]: "1+2+3+4",
+};

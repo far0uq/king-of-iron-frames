@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import "@components/MainPage/MainPage.css";
-import { movelist } from "@constants/moves.constants";
-import { charactersDropdown } from "@constants/characters.constants";
-import { Dropdown } from "@components/MainPage/Dropdown.tsx";
 import CommandDisplay from "@components/MainPage/CommandDisplay.tsx";
 import type { Input } from "@constants/inputs.constants";
+import OptionBar from "@components/MainPage/OptionBar.tsx";
+import Header from "@components/MainPage/Header.tsx";
+import CommandHistory from "@components/MainPage/CommandHistory.tsx";
+import Footer from "@components/MainPage/Footer.tsx";
 
 export default function MainPage() {
   const [selectedCharacter, setSelectedCharacter] = useState<string>("");
@@ -20,72 +20,27 @@ export default function MainPage() {
 
   return (
     <div className="h-screen grid grid-flow-row grid-rows-12 gap-6 p-10">
-      <header className="row-span-2 grid grid-flow-row gap-3 content-center">
-        <h1 className=" text-7xl font-bold">King of Iron Frames</h1>
-        <h3 className=" text-xl">Practice your TEKKEN Just-Frame Inputs!</h3>
-      </header>
+      <Header className="row-span-2 grid grid-flow-row gap-3 content-center" />
 
-      <section className="row-span-1 grid grid-cols-6 gap-8 bg-gray-50">
-        <div className="col-span-2">
-          <Dropdown
-            value={selectedCharacter}
-            onChange={setSelectedCharacter}
-            options={charactersDropdown}
-            placeholder="Select a character"
-            className="w-full h-full bg-black border-0 text-white px-4 py-2 border-r-[1vw] border-r-transparent rounded"
-          />
-        </div>
+      <OptionBar
+        selectedCharacter={selectedCharacter}
+        setSelectedCharacter={setSelectedCharacter}
+        selectedMove={selectedMove}
+        setSelectedMove={setSelectedMove}
+        setInputLength={setInputLength}
+        setInputNotation={setInputNotation}
+        className="row-span-1 grid grid-cols-6 gap-8 bg-gray-50"
+      />
 
-        <div className="col-span-2">
-          <Dropdown
-            value={selectedMove}
-            onChange={(selectedValue) => {
-              setSelectedMove(selectedValue);
-              setInputNotation(
-                movelist.find((move) => move.value === selectedValue)
-                  ?.inputNotation || [],
-              );
-              setInputLength(
-                movelist.find((move) => move.value === selectedValue)
-                  ?.inputLength || 0,
-              );
-            }}
-            options={movelist
-              .filter((move) => move.associatedCharacter === selectedCharacter)
-              .map((move) => ({ value: move.value, label: move.label }))}
-            placeholder="Select a move"
-            className="w-full h-full bg-black border-0 text-white px-4 py-2 border-r-[1vw] border-r-transparent rounded"
-          />
-        </div>
-
-        <div className="col-span-1">
-          <button
-            disabled
-            className="w-full h-full px-4 py-2 bg-black text-white rounded cursor-not-allowed disabled:bg-gray-300"
-          >
-            Timer
-          </button>
-        </div>
-
-        <div className="col-span-1">
-          <button
-            disabled
-            className="w-full h-full px-4 py-2 bg-black text-white rounded cursor-not-allowed disabled:bg-gray-300"
-          >
-            Controls
-          </button>
-        </div>
-      </section>
+      <CommandHistory className="row-span-1 border-b border-t content-center" />
 
       <CommandDisplay
         inputNotation={inputNotation}
         inputLength={inputLength}
-        className="row-span-8"
+        className="row-span-7"
       />
 
-      <footer className="row-span-1 text-center text-sm text-gray-500 content-center">
-        Made by Farouq with ⚡
-      </footer>
+      <Footer className="row-span-1 text-center text-sm text-gray-500 content-center" />
     </div>
   );
 }
