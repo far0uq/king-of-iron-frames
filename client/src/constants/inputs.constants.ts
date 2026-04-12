@@ -100,7 +100,7 @@ export const inputsImageMap: Record<Input, string> = {
   [INPUTS.DOWN_RIGHT_HELD]: direction_held,
 };
 
-export const Keys = {
+export const Keys: Record<string, string> = {
   // Letters
   ...Object.fromEntries(
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((c) => [c, `Key${c}`]),
@@ -135,35 +135,82 @@ export const Keys = {
   SLASH: "Slash",
 };
 
-const inputMapping = {
-  [INPUTS.UP]: Keys.,
+const basicInputsMapping: Record<string, string> = {
+  [INPUTS.UP]: Keys.W,
   [INPUTS.DOWN]: Keys.S,
   [INPUTS.LEFT]: Keys.A,
   [INPUTS.RIGHT]: Keys.D,
-  [INPUTS.UP_HELD]: "↑",
-  [INPUTS.DOWN_HELD]: "↓",
-  [INPUTS.LEFT_HELD]: "←",
-  [INPUTS.RIGHT_HELD]: "→",
-  [INPUTS.UP_LEFT]: "↖",
-  [INPUTS.UP_LEFT_HELD]: "↖",
-  [INPUTS.UP_RIGHT]: "↗",
-  [INPUTS.UP_RIGHT_HELD]: "↗",
-  [INPUTS.DOWN_LEFT]: "↙",
-  [INPUTS.DOWN_LEFT_HELD]: "↙",
-  [INPUTS.DOWN_RIGHT]: "↘",
-  [INPUTS.DOWN_RIGHT_HELD]: "↘",
-  [INPUTS.ONE]: "1",
-  [INPUTS.TWO]: "2",
-  [INPUTS.THREE]: "3",
-  [INPUTS.FOUR]: "4",
-  [INPUTS.ONE_TWO]: "1+2",
-  [INPUTS.ONE_THREE]: "1+3",
-  [INPUTS.ONE_FOUR]: "1+4",
-  [INPUTS.TWO_THREE]: "2+3",
-  [INPUTS.TWO_FOUR]: "2+4",
-  [INPUTS.THREE_FOUR]: "3+4",
-  [INPUTS.ONE_TWO_THREE]: "1+2+3",
-  [INPUTS.ONE_TWO_FOUR]: "1+2+4",
-  [INPUTS.TWO_THREE_FOUR]: "2+3+4",
-  [INPUTS.ONE_TWO_THREE_FOUR]: "1+2+3+4",
+  [INPUTS.ONE]: Keys.U,
+  [INPUTS.TWO]: Keys.I,
+  [INPUTS.THREE]: Keys.J,
+  [INPUTS.FOUR]: Keys.K,
+};
+
+const jointInputsMapping: Record<string, string[]> = {
+  // Diagonals
+  [INPUTS.UP_LEFT]: [
+    basicInputsMapping[INPUTS.UP],
+    basicInputsMapping[INPUTS.LEFT],
+  ],
+  [INPUTS.UP_RIGHT]: [
+    basicInputsMapping[INPUTS.UP],
+    basicInputsMapping[INPUTS.RIGHT],
+  ],
+  [INPUTS.DOWN_LEFT]: [
+    basicInputsMapping[INPUTS.DOWN],
+    basicInputsMapping[INPUTS.LEFT],
+  ],
+  [INPUTS.DOWN_RIGHT]: [
+    basicInputsMapping[INPUTS.DOWN],
+    basicInputsMapping[INPUTS.RIGHT],
+  ],
+
+  // Button Combinations
+  [INPUTS.ONE_TWO]: [
+    basicInputsMapping[INPUTS.ONE],
+    basicInputsMapping[INPUTS.TWO],
+  ],
+  [INPUTS.ONE_THREE]: [
+    basicInputsMapping[INPUTS.ONE],
+    basicInputsMapping[INPUTS.THREE],
+  ],
+  [INPUTS.ONE_FOUR]: [
+    basicInputsMapping[INPUTS.ONE],
+    basicInputsMapping[INPUTS.FOUR],
+  ],
+  [INPUTS.TWO_THREE]: [
+    basicInputsMapping[INPUTS.TWO],
+    basicInputsMapping[INPUTS.THREE],
+  ],
+  [INPUTS.TWO_FOUR]: [
+    basicInputsMapping[INPUTS.TWO],
+    basicInputsMapping[INPUTS.FOUR],
+  ],
+  [INPUTS.THREE_FOUR]: [
+    basicInputsMapping[INPUTS.THREE],
+    basicInputsMapping[INPUTS.FOUR],
+  ],
+
+  // Multi-Button Combinations
+  [INPUTS.ONE_TWO_THREE]: [
+    basicInputsMapping[INPUTS.ONE],
+    basicInputsMapping[INPUTS.TWO],
+    basicInputsMapping[INPUTS.THREE],
+  ],
+  [INPUTS.ONE_TWO_FOUR]: [
+    basicInputsMapping[INPUTS.ONE],
+    basicInputsMapping[INPUTS.TWO],
+    basicInputsMapping[INPUTS.FOUR],
+  ],
+  [INPUTS.TWO_THREE_FOUR]: [
+    basicInputsMapping[INPUTS.TWO],
+    basicInputsMapping[INPUTS.THREE],
+    basicInputsMapping[INPUTS.FOUR],
+  ],
+  [INPUTS.ONE_TWO_THREE_FOUR]: [
+    basicInputsMapping[INPUTS.ONE],
+    basicInputsMapping[INPUTS.TWO],
+    basicInputsMapping[INPUTS.THREE],
+    basicInputsMapping[INPUTS.FOUR],
+  ],
 };

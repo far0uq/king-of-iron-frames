@@ -5,12 +5,17 @@ import OptionBar from "@components/MainPage/OptionBar.tsx";
 import Header from "@components/MainPage/Header.tsx";
 import CommandHistory from "@components/MainPage/CommandHistory.tsx";
 import Footer from "@components/MainPage/Footer.tsx";
+import type { Section } from "@constants/ui.constants";
+import { SECTIONS } from "@constants/ui.constants";
 
 export default function MainPage() {
   const [selectedCharacter, setSelectedCharacter] = useState<string>("");
   const [selectedMove, setSelectedMove] = useState<string>("");
   const [inputNotation, setInputNotation] = useState<Input[][]>([]);
   const [inputLength, setInputLength] = useState<number>(0);
+  const [selectedSection, setSelectedSection] = useState<Section>(
+    SECTIONS.PRACTICE,
+  );
 
   useEffect(() => {
     setSelectedMove("");
@@ -29,16 +34,25 @@ export default function MainPage() {
         setSelectedMove={setSelectedMove}
         setInputLength={setInputLength}
         setInputNotation={setInputNotation}
+        setSelectedSection={setSelectedSection}
+        selectedSection={selectedSection}
         className="row-span-1 grid grid-cols-6 gap-8 bg-gray-50"
       />
 
-      <CommandHistory className="row-span-1 border-b border-t content-center" />
+      {selectedSection === SECTIONS.PRACTICE && (
+        <>
+          <CommandHistory className="row-span-1 border-b border-t content-center" />
+          <CommandDisplay
+            inputNotation={inputNotation}
+            inputLength={inputLength}
+            className="row-span-7"
+          />
+        </>
+      )}
 
-      <CommandDisplay
-        inputNotation={inputNotation}
-        inputLength={inputLength}
-        className="row-span-7"
-      />
+      {selectedSection === SECTIONS.CONTROLS && <></>}
+
+      {selectedSection === SECTIONS.TIMER && <></>}
 
       <Footer className="row-span-1 text-center text-sm text-gray-500 content-center" />
     </div>
