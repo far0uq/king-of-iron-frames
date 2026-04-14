@@ -7,6 +7,7 @@ import CommandHistory from "@components/MainPage/CommandHistory.tsx";
 import Footer from "@components/MainPage/Footer.tsx";
 import type { Section } from "@constants/ui.constants";
 import { SECTIONS } from "@constants/ui.constants";
+import ControlBindingsSlider from "@components/MainPage/ControlBindingsSlider.tsx";
 
 export default function MainPage() {
   const [selectedCharacter, setSelectedCharacter] = useState<string>("");
@@ -53,7 +54,7 @@ export default function MainPage() {
 
       {selectedSection === SECTIONS.CONTROLS && (
         <>
-          <div className="row-span-9"></div>
+          <ControlBindingsSlider className="row-span-9 flex flex-col gap-4" />
         </>
       )}
 

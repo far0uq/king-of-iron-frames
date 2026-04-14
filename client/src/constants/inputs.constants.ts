@@ -135,7 +135,7 @@ export const Keys: Record<string, string> = {
   SLASH: "Slash",
 };
 
-const basicInputsMapping: Record<string, string> = {
+export const basicInputsMapping: Record<string, string> = {
   [INPUTS.UP]: Keys.W,
   [INPUTS.DOWN]: Keys.S,
   [INPUTS.LEFT]: Keys.A,

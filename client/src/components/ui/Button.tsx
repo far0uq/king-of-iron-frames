@@ -12,7 +12,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`w-full bg-black text-white rounded cursor-pointer hover:bg-gray-800 transition-colors duration-200 ${additionalClasses}`}
+      className={`w-full bg-black text-white disabled:bg-gray-500 disabled:text-gray-300 rounded cursor-pointer hover:bg-gray-800 transition-colors duration-200 ${additionalClasses}`}
       {...props}
     >
       {children}

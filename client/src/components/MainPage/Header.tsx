@@ -31,6 +31,7 @@ function Header({ className, setSelectedSection }: HeaderProps) {
         <Button
           onClick={() => setSelectedSection(SECTIONS.TIMER)}
           additionalClasses="col-span-1"
+          disabled
         >
           Timer
         </Button>
