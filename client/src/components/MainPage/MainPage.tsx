@@ -25,7 +25,10 @@ export default function MainPage() {
 
   return (
     <div className="h-screen grid grid-flow-row grid-rows-12 gap-6 p-10">
-      <Header className="row-span-2 grid grid-flow-row gap-3 content-center" />
+      <Header
+        className="row-span-1 grid grid-cols-12 justify-between"
+        setSelectedSection={setSelectedSection}
+      />
 
       <OptionBar
         selectedCharacter={selectedCharacter}
@@ -34,8 +37,6 @@ export default function MainPage() {
         setSelectedMove={setSelectedMove}
         setInputLength={setInputLength}
         setInputNotation={setInputNotation}
-        setSelectedSection={setSelectedSection}
-        selectedSection={selectedSection}
         className="row-span-1 grid grid-cols-6 gap-8 bg-gray-50"
       />
 
@@ -45,14 +46,22 @@ export default function MainPage() {
           <CommandDisplay
             inputNotation={inputNotation}
             inputLength={inputLength}
-            className="row-span-7"
+            className="row-span-8"
           />
         </>
       )}
 
-      {selectedSection === SECTIONS.CONTROLS && <></>}
+      {selectedSection === SECTIONS.CONTROLS && (
+        <>
+          <div className="row-span-9"></div>
+        </>
+      )}
 
-      {selectedSection === SECTIONS.TIMER && <></>}
+      {selectedSection === SECTIONS.TIMER && (
+        <>
+          <div className="row-span-9"></div>
+        </>
+      )}
 
       <Footer className="row-span-1 text-center text-sm text-gray-500 content-center" />
     </div>
