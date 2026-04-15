@@ -1,21 +1,64 @@
 import BindingOption from "./BindingOption";
-import { INPUTS } from "@constants/inputs.constants";
+import { INPUTS, type Input } from "@constants/inputs.constants";
+import Button from "@components/ui/Button";
 
 interface ControlBindingsSliderProps {
   className?: string;
+  setActiveBinding: (activeBinding: Input | null) => void;
+  activeBinding: Input | null;
 }
 
-function ControlBindingsSlider({ className }: ControlBindingsSliderProps) {
+function ControlBindingsSlider({
+  className,
+  setActiveBinding,
+  activeBinding,
+}: ControlBindingsSliderProps) {
   return (
     <div className={className}>
-      <BindingOption input={INPUTS.UP} />
-      <BindingOption input={INPUTS.DOWN} />
-      <BindingOption input={INPUTS.LEFT} />
-      <BindingOption input={INPUTS.RIGHT} />
-      <BindingOption input={INPUTS.ONE} />
-      <BindingOption input={INPUTS.TWO} />
-      <BindingOption input={INPUTS.THREE} />
-      <BindingOption input={INPUTS.FOUR} />
+      <BindingOption
+        input={INPUTS.UP}
+        setActiveBinding={setActiveBinding}
+        activeBinding={activeBinding}
+      />
+      <BindingOption
+        input={INPUTS.DOWN}
+        setActiveBinding={setActiveBinding}
+        activeBinding={activeBinding}
+      />
+      <BindingOption
+        input={INPUTS.LEFT}
+        setActiveBinding={setActiveBinding}
+        activeBinding={activeBinding}
+      />
+      <BindingOption
+        input={INPUTS.RIGHT}
+        setActiveBinding={setActiveBinding}
+        activeBinding={activeBinding}
+      />
+      <BindingOption
+        input={INPUTS.ONE}
+        setActiveBinding={setActiveBinding}
+        activeBinding={activeBinding}
+      />
+      <BindingOption
+        input={INPUTS.TWO}
+        setActiveBinding={setActiveBinding}
+        activeBinding={activeBinding}
+      />
+      <BindingOption
+        input={INPUTS.THREE}
+        setActiveBinding={setActiveBinding}
+        activeBinding={activeBinding}
+      />
+      <BindingOption
+        input={INPUTS.FOUR}
+        setActiveBinding={setActiveBinding}
+        activeBinding={activeBinding}
+      />
+
+      <Button onClick={() => setActiveBinding(null)} additionalClasses="h-10">
+        Reset to Default
+      </Button>
     </div>
   );
 }
